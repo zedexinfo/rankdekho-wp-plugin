@@ -195,7 +195,7 @@ class RankDekho_API {
             
             // Generate payment URL
             $payment_url = add_query_arg(
-                array('hash' => $hash),
+                array('hash' => urlencode($hash)),
                 rest_url('rankdekho/v1/process-payment')
             );
             
@@ -270,7 +270,24 @@ class RankDekho_API {
             }
             
             // Add product to cart and redirect to checkout
-            RankDekho_WooCommerce::get_instance()->add_plan_to_cart($payment_data['plan_id']);
+            if (!class_exists('WC_Cart')) {
+                return new WP_Error('woocommerce_missing', 'WooCommerce is not available', array('status' => 500));
+            }
+
+            if (!WC()->session) {
+                WC()->initialize_session();
+            }
+            if (!WC()->cart) {
+                wc_load_cart();
+            }
+
+            $product = wc_get_product($payment_data['plan_id']);
+            if (!$product || !$product->is_purchasable()) {
+                return new WP_Error('invalid_product', 'Product not found or not purchasable', array('status' => 400));
+            }
+
+            WC()->cart->empty_cart();
+            WC()->cart->add_to_cart($payment_data['plan_id']);
             
             // Clear the hash token to prevent reuse
             $wpdb->update(
