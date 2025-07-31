@@ -1,0 +1,156 @@
+/* RankDekho Payment Gateway Admin Styles */
+
+.rankdekho-admin-tabs {
+    margin-top: 20px;
+}
+
+.rankdekho-admin-tabs .nav-tab-wrapper {
+    border-bottom: 1px solid #ccd0d4;
+    margin-bottom: 20px;
+}
+
+.rankdekho-admin-tabs .tab-content {
+    display: none;
+}
+
+.rankdekho-admin-tabs .tab-content.active {
+    display: block;
+}
+
+.rankdekho-admin-tabs .widefat {
+    margin-top: 10px;
+}
+
+.rankdekho-admin-tabs .widefat td {
+    padding: 10px;
+}
+
+.rankdekho-admin-tabs .form-table th {
+    width: 200px;
+}
+
+#tools-results {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    border-radius: 4px;
+    display: none;
+}
+
+#tools-results.show {
+    display: block;
+}
+
+#tools-results.success {
+    border-color: #46b450;
+    background: #ecf7ed;
+}
+
+#tools-results.error {
+    border-color: #dc3232;
+    background: #fbeaea;
+}
+
+.rankdekho-status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.rankdekho-status-indicator.green {
+    background-color: #46b450;
+}
+
+.rankdekho-status-indicator.red {
+    background-color: #dc3232;
+}
+
+.rankdekho-status-indicator.yellow {
+    background-color: #ffba00;
+}
+
+.rankdekho-code-block {
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    overflow-x: auto;
+}
+
+.rankdekho-log-entry {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    font-size: 13px;
+}
+
+.rankdekho-log-entry:last-child {
+    border-bottom: none;
+}
+
+.rankdekho-log-timestamp {
+    font-weight: bold;
+    color: #666;
+}
+
+.rankdekho-log-message {
+    margin: 5px 0;
+}
+
+.rankdekho-log-context {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    margin-top: 5px;
+    white-space: pre-wrap;
+}
+
+.rankdekho-button-group {
+    margin: 10px 0;
+}
+
+.rankdekho-button-group .button {
+    margin-right: 10px;
+}
+
+.rankdekho-settings-group {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.rankdekho-settings-group h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.rankdekho-notice {
+    padding: 10px;
+    border-left: 4px solid #00a0d2;
+    background: #f7fcfe;
+    margin: 15px 0;
+}
+
+.rankdekho-notice.success {
+    border-left-color: #46b450;
+    background: #ecf7ed;
+}
+
+.rankdekho-notice.error {
+    border-left-color: #dc3232;
+    background: #fbeaea;
+}
+
+.rankdekho-notice.warning {
+    border-left-color: #ffba00;
+    background: #fff8e5;
+}
