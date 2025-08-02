@@ -1,4 +1,4 @@
-name: SSH and Pull(RankDekho on runcloud)
+name: SSH and Pull(RankDekho)
 on:
   push:
     branches:
