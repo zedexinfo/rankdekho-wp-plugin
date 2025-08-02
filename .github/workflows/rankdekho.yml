@@ -1,0 +1,21 @@
+name: SSH and Pull(RankDekho on runcloud)
+on:
+  push:
+    branches:
+      - main
+jobs:
+  ssh_and_pull:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/webapps/app-teawale/wp-content/plugins/rankdekho-wp-plugin
+            git pull
+      - name: Close SSH connection
+        run: exit
