@@ -15,7 +15,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd ~/webapps/app-teawale/wp-content/plugins/rankdekho-wp-plugin
+            cd ~/webapps/app-rankdekho/wp-content/plugins/rankdekho-wp-plugin
             git pull
       - name: Close SSH connection
         run: exit
