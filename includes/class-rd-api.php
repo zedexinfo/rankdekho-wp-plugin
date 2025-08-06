@@ -46,7 +46,7 @@ if (!class_exists("RankDekho_API")) {
                 'args' => array(
                     'java_user_id' => array(
                         'required' => true,
-                        'type' => 'integer',
+                        'type' => 'string',
                         'validate_callback' => function($param, $request, $key) {
                             return is_numeric($param) && $param > 0;
                         }
