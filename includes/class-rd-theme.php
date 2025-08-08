@@ -14,6 +14,8 @@ if (!class_exists("RankDekho_Theme")) {
             add_action('woocommerce_review_order_before_submit', [$this, 'rankdekho_terms_and_conditions_checkbox'], 9);
             add_action('woocommerce_checkout_process', [$this, 'rankdekho_terms_and_conditions_validation']);
             add_filter('woocommerce_account_menu_items', [$this, 'rankdekho_customize_my_account_menu']);
+            add_filter('woocommerce_get_endpoint_url', [$this, 'rankdekho_custom_dashboard'], 10, 4);
+            add_action('woocommerce_before_checkout_form', [$this, 'back_to_pricing_page']);
         }
 
         public static function getInstance()
@@ -50,14 +52,40 @@ if (!class_exists("RankDekho_Theme")) {
             }
         }
 
-        public function rankdekho_customize_my_account_menu($menu_links) {
-            unset($menu_links['orders']);
-            unset($menu_links['downloads']);
-            unset($menu_links['edit-address']);
-            unset($menu_links['edit-account']);
-            unset($menu_links['customer-logout']);
+        public function rankdekho_customize_my_account_menu($items) {
+            unset($items['dashboard']);
+            unset($items['orders']);
+            unset($items['downloads']);
+            unset($items['edit-address']);
+            unset($items['edit-account']);
+            unset($items['customer-logout']);
 
-            return $menu_links;
+            $new_items['custom-dashboard'] = '← Dashboard';
+
+            return $new_items + $items;
+        }
+
+        public function rankdekho_custom_dashboard($url, $endpoint, $value, $permalink) {
+            if ($endpoint === 'custom-dashboard') {
+                return 'https://stage-app.rankdekho.com/';
+            }
+            return $url;
+        }
+
+        public function back_to_pricing_page() {
+            $product_id = 0;
+            foreach (WC()->cart->get_cart() as $cart_item) {
+                $product_id = $cart_item['product_id'];
+                break;
+            }
+
+            $pricing_url = add_query_arg('product_id', $product_id, 'https://stage-app.rankdekho.com/pricing');
+
+            echo '<div style="margin-bottom:20px;">
+                    <a href="' . esc_url($pricing_url) . '" class="button" style="background:#7952BD; color:#fff; padding:10px 20px; border-radius:5px; text-decoration: unset">
+                        ← Back to Pricing
+                    </a>
+                  </div>';
         }
     }
 }
