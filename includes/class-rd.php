@@ -11,6 +11,7 @@ if (!class_exists("rankDekho")) {
         public $RankDekho_Admin;
         public $RankDekho_Ajax;
         public $RankDekho_Utils;
+        public $RankDekho_Theme;
 
         public function __construct()
         {
@@ -43,6 +44,7 @@ if (!class_exists("rankDekho")) {
             include_once RD_INCLUDES_PATH . 'class-rd-admin.php';
             include_once RD_INCLUDES_PATH . 'class-rd-ajax.php';
             include_once RD_INCLUDES_PATH . 'class-rd-utils.php';
+            include_once RD_INCLUDES_PATH . 'class-rd-theme.php';
         }
 
         public function init()
@@ -51,6 +53,7 @@ if (!class_exists("rankDekho")) {
             $this->RankDekho_Admin = RankDekho_Admin::getInstance();
             $this->RankDekho_Ajax = RankDekho_Ajax::getInstance();
             $this->RankDekho_Utils = RankDekho_Utils::getInstance();
+            $this->RankDekho_Theme = RankDekho_Theme::getInstance();
         }
 
         public static function create_tables() {
